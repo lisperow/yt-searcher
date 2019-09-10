@@ -9,8 +9,32 @@ import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  components: {},
+  data() {
+    return {
+      videos: [],
+      reformattedSearchString: '',
+      api: {
+        baseUrl: 'https://www.googleapis.com/youtube/v3/search?',
+        part: 'snippet',
+        type: 'video',
+        order: 'viewCount',
+        maxResults: 12,
+        q: '',
+        key: 'AIzaSyCrShU4oZcVaEqeTZQpdnlPge4hbMRkTx0',
+        prevPageToken: '',
+        nextPageToken: ''
+      }
+    };
+  },
+  methods: {
+    search(searchParams) {
+      this.reformattedSearchString = searchParams.join(' ');
+      this.api.q = searchParams.join('+');
+      const { baseUrl, part, type, order, maxResults, q, key } = this.api;
+      const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&q=${q}&maxResults=${maxResults}&key=${key}`;
+      this.getData(apiUrl);
+    }
   }
 }
 </script>
