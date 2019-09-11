@@ -21,6 +21,11 @@
 import axios from 'axios'
 import dotenv from 'dotenv'
 
+import Header from './components/layout/Header';
+import SearchForm from './components/SearchForm';
+import SearchResults from './components/SearchResults';
+import Pagination from './components/Pagination';
+
 dotenv.config()
 
 export default {
@@ -74,6 +79,7 @@ export default {
           this.api.prevPageToken = res.data.prevPageToken;
           this.api.nextPageToken = res.data.nextPageToken;
         })
+        // eslint-disable-next-line
         .catch(e => console.log(e));
     }
   }
