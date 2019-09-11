@@ -6,6 +6,10 @@
 
 <script>
 
+import dotenv from 'dotenv'
+
+dotenv.config()
+
 export default {
   name: 'app',
   components: {},
@@ -20,7 +24,7 @@ export default {
         order: 'viewCount',
         maxResults: 12,
         q: '',
-        key: 'AIzaSyCrShU4oZcVaEqeTZQpdnlPge4hbMRkTx0',
+        key: process.env.API_KEY,
         prevPageToken: '',
         nextPageToken: ''
       }
@@ -39,12 +43,4 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
